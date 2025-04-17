@@ -9,5 +9,5 @@ import com.library.model.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long>{
-	List<Book> findByUsername(String username);
+	List<Book> findByBookName(String bookName);
 }

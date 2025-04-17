@@ -44,7 +44,7 @@ class BookControllerTest {
     //TODO move to base class as sample data
     Book mockBook = new Book(10001, "JavaBooks", "An in-depth guide to Spring Boot development.");
 
-    String exampleBookJson = "{\"id\":10001,\"username\":\"JavaBooks\",\"description\":\"An in-depth guide to Spring Boot development.\"}";
+    String exampleBookJson = "{\"id\":10001,\"bookName\":\"JavaBooks\",\"description\":\"An in-depth guide to Spring Boot development.\"}";
 
     @Test
     public void getBook() throws Exception {

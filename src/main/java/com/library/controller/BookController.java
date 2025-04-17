@@ -23,55 +23,55 @@ import com.library.service.BookService;
 //@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 @RestController
 public class BookController {
-	
+
 	@Autowired
 	private BookService bookService;
 
-	@GetMapping("/library/{username}/books")
-	public List<Book> getAllBooks(@PathVariable String username) {
-		
-		List<Book> books = bookService.getAllBooks(username);
-		
+	@GetMapping("/library/{bookName}/books")
+	public List<Book> getAllBooks(@PathVariable String bookName) {
+
+		List<Book> books = bookService.getAllBooks(bookName);
+
 		return books;
 	}
 
-	@GetMapping("/library/{username}/books/{id}")
-	public Book getBook(@PathVariable String username, @PathVariable long id) {
+	@GetMapping("/library/{bookName}/books/{id}")
+	public Book getBook(@PathVariable String bookName, @PathVariable long id) {
 		
-		Book book = bookService.getBook(username, id);
+		Book book = bookService.getBook(bookName, id);
 		return book;
 	}
 
-	@DeleteMapping("/library/{username}/books/{id}")
-	public ResponseEntity<Void> deleteBook(@PathVariable String username, @PathVariable long id) {
+	@DeleteMapping("/library/{bookName}/books/{id}")
+	public ResponseEntity<Void> deleteBook(@PathVariable String bookName, @PathVariable long id) {
 
-		bookService.deleteBook(username, id);
+		bookService.deleteBook(bookName, id);
 
 		ResponseEntity<Void> responseEntity = ResponseEntity.noContent().build();
 		return responseEntity;
 	}
 
-	@PutMapping("/library/{username}/books/{id}")
-	public ResponseEntity<Book> updateBook(@PathVariable String username, @PathVariable long id,
+	@PutMapping("/library/{bookName}/books/{id}")
+	public ResponseEntity<Book> updateBook(@PathVariable String bookName, @PathVariable long id,
 			@RequestBody Book book) {
 
-		book.setUsername(username);
+		book.setBookName(bookName);
 		
-		Book bookUpdated = bookService.updateBook(username, id, book);
+		Book bookUpdated = bookService.updateBook(bookName, id, book);
 		
 		ResponseEntity<Book> responseEntity = new ResponseEntity<Book>(bookUpdated, HttpStatus.OK);
 
 		return responseEntity;
 	}
 
-	@PostMapping("/library/{username}/books")
-	public ResponseEntity<Void> createBook(@PathVariable String username, @RequestBody Book book) {
+	@PostMapping("/library/{bookName}/books")
+	public ResponseEntity<Void> createBook(@PathVariable String bookName, @RequestBody Book book) {
 		
-		book.setUsername(username);
+		book.setBookName(bookName);
 
 		//TODO add already exists
 		//TODO maybe add UI how to handle exceptions
-		Book createdBook = bookService.createBook(username, book);
+		Book createdBook = bookService.createBook(bookName, book);
 		
 		if (createdBook == null)
 			return ResponseEntity.noContent().build();

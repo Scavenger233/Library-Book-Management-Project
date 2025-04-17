@@ -10,17 +10,17 @@ public class Book {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String username;
+	private String bookName;
 	private String description;
 
 	public Book() {
 
 	}
 
-	public Book(long id, String username, String description) {
+	public Book(long id, String bookName, String description) {
 		super();
 		this.id = id;
-		this.username = username;
+		this.bookName = bookName;
 		this.description = description;
 	}
 
@@ -32,12 +32,12 @@ public class Book {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getBookName() {
+		return bookName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 
 	public String getDescription() {

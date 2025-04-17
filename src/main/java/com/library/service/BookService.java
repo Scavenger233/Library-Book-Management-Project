@@ -6,13 +6,13 @@ import com.library.model.Book;
 
 public interface BookService {
 
-	List<Book> getAllBooks(String username);
+	List<Book> getAllBooks(String bookName);
 	
-	Book getBook(String username, long id);
+	Book getBook(String bookName, long id);
 	
-	void deleteBook(String username, long id);
+	void deleteBook(String bookName, long id);
 	
-	Book updateBook(String username, long id, Book book);
+	Book updateBook(String bookName, long id, Book book);
 	
-	Book createBook(String username, Book book);
+	Book createBook(String bookName, Book book);
 }
